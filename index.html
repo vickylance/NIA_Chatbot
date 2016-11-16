@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Modular Chat Bot</title>
+  <style type="text/css">
+    [ng\:cloak],
+    [ng-cloak],
+    .ng-cloak {
+      display: none !important;
+    }
+  </style>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel='stylesheet prefetch' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.3/jquery.mCustomScrollbar.min.css'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css" />
+  <link rel="stylesheet" href="css/style.css">
+  <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>
+  <script type="text/javascript">
+  var j = $.noConflict();
+  </script>
+  <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-animate.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-aria.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-messages.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0/angular-material.min.js"></script>
+</head>
+
+<body ng-app="submitExample" style="background: url(images/home.png) !important;">
+  <div id="animHelpText" class="animated bounce" style="display: none;">We are glad to assist you !!</div>
+  <div class="chat" id="chatbox">
+    <div class="chat-title" ng-controller="ChatTitleCtrl" ng-init="maximChatbox()">
+      <h1>Tax Advisor <sup>Alpha v1</sup></h1>
+      <h2>Your Assistant</h2>
+      <button class="chat-minmax" ng-click="minimChatbox()" id="minim-chat" style="display: none;">
+        <i class="fa fa-minus fa-lg" aria-hidden="true"></i>
+      </button>
+      <button class="chat-minmax" ng-click="maximChatbox()" id="maxi-chat">
+        <i class="fa fa-plus fa-lg" aria-hidden="true"></i>
+      </button>
+    </div>
+    <div class="messages">
+      <div class="messages-content" id="messages-content"></div>
+    </div>
+    <div ng-controller="autoCompleteController as ctrl" id="carForm">
+      <form ng-submit="submit1();$event.preventDefault();" class="message-box">
+        <md-autocomplete ng-model="name" class="message-input" ng-disabled="ctrl.isDisabled" md-no-cache="ctrl.noCacheResults" md-selected-item="ctrl.selectedItem"
+          md-search-text-change="ctrl.searchTextChange(ctrl.searchText)" md-search-text="ctrl.searchText" md-selected-item-change="ctrl.selectedItemChange(item)"
+          md-items="item in ctrl.querySearch(ctrl.searchText)" md-item-text="item.display" md-min-length="0" placeholder="Please enter your question...">
+          <md-item-template>
+            <span md-highlight-text="ctrl.searchText" md-highlight-flags="^i">{{item.display}}</span>
+          </md-item-template>
+          <!-- <md-not-found>
+    No matching "{{ctrl.searchText}}" were found.
+    </md-not-found> -->
+        </md-autocomplete>
+        <button type="submit" id="submit-form" class="message-submit">Send</button>
+      </form>
+    </div>
+  </div>
+  </div>
+  <script type="text/javascript" src='https://cdnjs.cloudflare.com/ajax/libs/malihu-custom-scrollbar-plugin/3.1.3/jquery.mCustomScrollbar.concat.min.js'></script>
+  <script type="text/javascript" src="js/index.js"></script>
+</body>
+
+</html>
